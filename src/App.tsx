@@ -1,12 +1,25 @@
-import React from 'react';
-import './App.css';
+import { useSelector } from 'react-redux';
 
-import Layout from './components/app/layout';
+import { ThemeProvider } from '@mui/material/styles';
+import { CssBaseline, StyledEngineProvider } from '@mui/material';
+
+
 
 function App() {
+  const customization = useSelector((state) => state.customization);
+
   return (
-      <Layout></Layout>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider theme={themes(customization)}>
+          <CssBaseline />
+          <NavigationScroll>
+              <Routes />
+          </NavigationScroll>
+      </ThemeProvider>
+  </StyledEngineProvider>
   );
 }
+
+
 
 export default App;
