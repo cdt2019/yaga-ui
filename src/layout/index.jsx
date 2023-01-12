@@ -1,11 +1,22 @@
-import React from 'react'
 import Header from './header'
 import Sidebar from './sidebar'
+import Footer from './footer'
+import Content from './content';
+
+import {  Box, CssBaseline } from '@mui/material';
+
+
 export default function Layout() {
   return (
-    <>
-      <Sidebar></Sidebar>
-      <Header></Header>
-    </>
+        <Box sx={{ display: 'flex' }}>
+            <CssBaseline />
+            <Header />
+
+            <Sidebar />
+
+            <Content />
+           
+           <Footer />
+        </Box>
   )
 }
