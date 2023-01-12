@@ -3,23 +3,21 @@ import { useSelector } from 'react-redux';
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline, StyledEngineProvider } from '@mui/material';
 
+//本地配置的主题
+import theme from './themes';
 
+import ThemeRoutes from './routes'
 
 function App() {
-  const customization = useSelector((state) => state.customization);
-
+  //const customization = useSelector((state) => state.customization);
   return (
     <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={themes(customization)}>
+      <ThemeProvider theme={theme}>
           <CssBaseline />
-          <NavigationScroll>
-              <Routes />
-          </NavigationScroll>
+          <ThemeRoutes />
       </ThemeProvider>
   </StyledEngineProvider>
   );
 }
-
-
 
 export default App;
