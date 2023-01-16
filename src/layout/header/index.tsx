@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -9,12 +9,17 @@ import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+
+import {useAppSelector, useAppDispatch} from '../../store/hooks';
+import {setSidebarOpen} from '../../store/slices/AppConfigSlice';
+
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -80,6 +85,12 @@ export default function Header() {
   const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  const sidebarOpen = useAppSelector((state) => state.appConfig.sidebarOpen);
+  const dispatch = useAppDispatch();
+  const siwtchOpenSidebar = () => {
+    dispatch({"type": setSidebarOpen.type});
+  }
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -156,7 +167,7 @@ export default function Header() {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -165,6 +176,7 @@ export default function Header() {
             color="inherit"
             aria-label="open drawer"
             sx={{ mr: 2 }}
+            onClick={() => siwtchOpenSidebar()}
           >
             <MenuIcon />
           </IconButton>

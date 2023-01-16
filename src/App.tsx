@@ -6,6 +6,7 @@ import { CssBaseline, StyledEngineProvider } from '@mui/material';
 //本地配置的主题
 import theme from './themes';
 
+//引入路由
 import ThemeRoutes from './routes'
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
   return (
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
-          <CssBaseline />
+          <CssBaseline /> 
           <ThemeRoutes />
       </ThemeProvider>
   </StyledEngineProvider>
