@@ -21,9 +21,6 @@ export const appConfigSlice = createSlice({
     }
 });
 
-console.log(appConfigSlice);
-console.log(appConfigSlice.actions);
-
 //导出actionCreator
 export const {setSidebarOpen} = appConfigSlice.actions;
 
