@@ -23,6 +23,7 @@ import Public from '@mui/icons-material/Public';
 
 import {useAppSelector, useAppDispatch} from '../../store/hooks';
 import {setSidebarOpen} from '../../store/slices/AppConfigSlice';
+import MenuItem from './MenuItem'
 
 const data = [
   { icon: <People />, label: 'Authentication' },
@@ -177,86 +178,7 @@ export default function Sidebar() {
                   </Tooltip>
                 </ListItem>
                 <Divider />
-                <Box
-                  sx={{
-                    bgcolor: sidebarOpen ? 'rgba(71, 98, 130, 0.2)' : null,
-                    pb: sidebarOpen ? 2 : 0,
-                  }}
-                >
-                  <ListItemButton
-                    alignItems="flex-start"
-                    onClick={siwtchOpenSidebar}
-                    sx={{
-                      px: 0,
-                      pt: 2.5,
-                      pb: 2.5,
-                      justifyContent: sidebarOpen ? 'initial' : 'center',
-                      //pb: sidebarOpen ? 0 : 2.5,
-                      // '&:hover, &:focus': { '& svg': { opacity: sidebarOpen ? 1 : 0 } },
-                    }}
-                  >
-                    <ListItemText
-                      primary="Build"
-                      primaryTypographyProps={{
-                        fontSize: 15,
-                        fontWeight: 'medium',
-                        lineHeight: '16px',
-                        mb: '2px',
-                      }}
-                      // secondary="Authentication, Firestore Database, Realtime Database, Storage, Hosting, Functions, and Machine Learning"
-                      // secondaryTypographyProps={{
-                      //   noWrap: true,
-                      //   fontSize: 12,
-                      //   lineHeight: '16px',
-                      //   color: sidebarOpen ? 'rgba(0,0,0,0)' : 'rgba(255,255,255,0.5)',
-                      // }}
-                      sx={{ my: 0 }}
-                    />
-                    <KeyboardArrowDown
-                        sx={{
-                          mr: -1,
-                          opacity: 1,
-                          transformOrigin: "center, center",
-                          transform: sidebarOpen ? 'rotate(-180deg)' : 'rotate(0deg)',
-                          transition: '0.2s',
-                        }}
-                      />
-                  
-                      {/* <KeyboardArrowDown
-                        sx={{
-                          mr: -1,
-                          opacity: 0,
-                          transform: sidebarOpen ? 'rotate(-180deg)' : 'rotate(0)',
-                          transition: '0.2s',
-                        }}
-                      />
-                    <KeyboardArrowUp
-                      sx={{
-                        mr: -1,
-                        opacity: 0,
-                        transform: !sidebarOpen ? 'rotate(-180deg)' : 'rotate(0)',
-                        transition: '0.2s',
-                      }}
-                    /> */}
-                  </ListItemButton>
-                  {//sidebarOpen &&
-                    data.map((item) => (
-                      <ListItemButton
-                        key={item.label}
-                        sx={{ py: 0, minHeight: 32, color: 'rgba(255,255,255,.8)', justifyContent: sidebarOpen ? 'initial' : 'center',
-                      }}
-                      >
-                        <ListItemIcon sx={{ color: 'inherit' }}>
-                          {item.icon}
-                        </ListItemIcon>
-                        <ListItemText
-                          primary={item.label}
-                          primaryTypographyProps={{ fontSize: 14, fontWeight: 'medium' }}
-                          sx={{ opacity: sidebarOpen ? 1 : 0 }}
-                        />
-                      </ListItemButton>
-                    ))}
-                </Box>
+                
               </FireNav>
             </Paper>
           </ThemeProvider>
