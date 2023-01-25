@@ -8,10 +8,10 @@ import { Box, CssBaseline } from '@mui/material';
 export default function Layout() {
 
   return (
-        <Box sx={{ display: 'flex', height:'100vh'}}>
+        <Box sx={{ display: 'flex', height:'100vh', }}>
             <CssBaseline />
             <Sidebar />
-            <Box sx={{display: 'flex', flexDirection: 'column',  flexGrow:1}}>
+            <Box sx={{display: 'flex', flexDirection: 'column', flexGrow:1,}}>
               <Header />
               <Content />
               <Footer />
