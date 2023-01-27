@@ -12,31 +12,28 @@ import MuiDrawer  from '@mui/material/Drawer';
 import {useAppSelector, useAppDispatch} from '../../store/hooks';
 import MenuGroup from './MenuGroup'
 import menuConfig from './MenuConfig'
+import sidebarStyleCofnig from './SidebarStyleConfig';
 
 const FireNav = styled(List)<{ component?: React.ElementType }>({
-   '& .MuiListItemButton-root': {
-    //paddingLeft: 24,
-    //paddingRight: 24,
-  },
   '& .MuiListItemIcon-root': {
     minWidth: 0,
     marginRight: 16,
   },
   '& .MuiSvgIcon-root': {
-    fontSize: 20,
+    fontSize: sidebarStyleCofnig.item.icon.fontSize,
   },
 });
 
-const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({
-  width: drawerWidth,
+  width: sidebarStyleCofnig.expandWidth,
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
   }),
   overflowX: 'hidden',
   borderRightWidth:'0px',
+
   '&::-webkit-scrollbar': {
     width: '0.4em'
   },
@@ -61,6 +58,7 @@ const closedMixin = (theme: Theme): CSSObject => ({
     width: `calc(${theme.spacing(8)} + 1px)`,
   },
   borderRightWidth:'0px',
+
   "&::-webkit-scrollbar, & *::-webkit-scrollbar": {
     backgroundColor: "#2b2b2b",
   },
@@ -86,7 +84,6 @@ const closedMixin = (theme: Theme): CSSObject => ({
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
-    width: drawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
     ...(open && {
@@ -128,21 +125,23 @@ export default function Sidebar() {
               <FireNav component="nav" disablePadding >
                 <ListItemButton component="a" href="#customized-list">
                   <ListItemIcon sx={{ fontSize: 20 }}>🔥</ListItemIcon>
-                  <ListItemText
-                    sx={{ my: 0, opacity: sidebarOpen? 1 : 0, }}
-                    primary="Firebash"
-                    primaryTypographyProps={{
-                      fontSize: 20,
-                      fontWeight: 'medium',
-                      letterSpacing: 0,
-                    }} 
-                  />
+                  {
+                    sidebarOpen?<ListItemText
+                          sx={{ my: 0, opacity: sidebarOpen? 1 : 0, }}
+                          primary="Firebash"
+                          primaryTypographyProps={{
+                            fontSize: 20,
+                            fontWeight: 'medium',
+                            letterSpacing: 0,
+                          }} 
+                        /> : null
+                  }
                 </ListItemButton>
                 <Divider />
                 {
                   menuConfig.map(
                     (item) => <>
-                                <MenuGroup key={item.type} {...item}></MenuGroup>
+                                <MenuGroup key={item.identy} {...item}></MenuGroup>
                                 <Divider />
                               </>
                      
